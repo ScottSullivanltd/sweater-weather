@@ -4,14 +4,16 @@ RSpec.describe Image do
   it "creates a poro for an image", :vcr do
     attr = {
       results: [
-        description: "Community in Denver.",
-        alt_description: nil,
-        urls: {
-          regular: "https://images.unsplash.com/photo-1634507307799-ace9b49840b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzczNDZ8MHwxfHNlYXJjaHwzfHxkZW52ZXIlMkNjb3xlbnwwfHx8fDE2NTUwOTI4MTQ&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        user: {
-          name: "Dillon Wanner",
-          portfolio_url: "https://dillydally.myportfolio.com"
+        {
+          description: "Community in Denver.",
+          alt_description: nil,
+          urls: {
+            regular: "https://images.unsplash.com/photo-1634507307799-ace9b49840b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzczNDZ8MHwxfHNlYXJjaHwzfHxkZW52ZXIlMkNjb3xlbnwwfHx8fDE2NTUwOTI4MTQ&ixlib=rb-1.2.1&q=80&w=1080"
+          },
+          user: {
+            name: "Dillon Wanner",
+            portfolio_url: "https://dillydally.myportfolio.com"
+          }
         }
       ]
     }

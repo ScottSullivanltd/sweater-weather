@@ -21,8 +21,8 @@ RSpec.describe "Backgrounds API" do
         expect(data[:attributes]).to have_key(:image)
 
         image = data[:attributes][:image]
-        expect(image).to have_key(:location)
-        expect(image[:location]).to be_a(String)
+        expect(image).to have_key(:description)
+        expect(image[:description]).to be_a(String)
         expect(image).to have_key(:image_url)
         expect(image[:image_url]).to be_an(String)
         expect(image).to have_key(:credit)
