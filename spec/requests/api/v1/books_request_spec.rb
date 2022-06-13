@@ -32,7 +32,7 @@ RSpec.describe "Books API" do
         expect(forecast).to have_key(:summary)
         expect(forecast[:summary]).to be_a(String)
         expect(forecast).to have_key(:temperature)
-        expect(forecast[:temperature]).to be_an(String)
+        expect(forecast[:temperature]).to be_a(Float)
 
         books = data[:attributes][:books][0]
         expect(books).to have_key(:isbn)

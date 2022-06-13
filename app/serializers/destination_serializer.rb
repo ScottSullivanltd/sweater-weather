@@ -9,21 +9,16 @@ class DestinationSerializer
           forecast: {
             summary: weather.current_weather.conditions,
             temperature: weather.current_weather.temperature
-          }
-        },
-        total_books_found: books.count,
-        books: [
-          {
-            isbn: [
-              books.isbn[0],
-              books.isbn[1]
-            ],
-            title: books.title,
-            publisher: [
-              books.publisher
-            ]
-          }
-        ]
+          },
+          total_books_found: books[:numFound],
+          books: books[:docs].map do |book|
+                   {
+                     isbn: book[:isbn],
+                     title: book[:title],
+                     publisher: book[:publisher]
+                   }
+                 end
+        }
       }
     }
   end
