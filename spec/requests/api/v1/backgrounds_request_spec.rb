@@ -11,8 +11,7 @@ RSpec.describe "Backgrounds API" do
 
       json = JSON.parse(response.body, symbolize_names: true)
       data = json[:data]
-      require "pry"
-      binding.pry
+
       aggregate_failures do
         expect(data).to have_key(:id)
         expect(data[:id]).to be(nil)
