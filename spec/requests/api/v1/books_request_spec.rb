@@ -3,12 +3,12 @@ require "rails_helper"
 RSpec.describe "Books API" do
   describe "books" do
     it "successfully returns list of books for given location", :vcr do
-      all_params = {
+      book_params = {
         location: "denver,co",
         quantity: 5
       }
 
-      get "/api/v1/book-search", params: all_params
+      get "/api/v1/book-search", params: book_params
 
       json = JSON.parse(response.body, symbolize_names: true)
       data = json[:data]
@@ -20,9 +20,13 @@ RSpec.describe "Books API" do
         expect(data[:type]).to eq("books")
         expect(data).to have_key(:attributes)
         expect(data[:attributes]).to have_key(:destination)
+        expect(data[:attributes][:destination]).to be_a(String)
         expect(data[:attributes]).to have_key(:forecast)
+        expect(data[:attributes][:forecast]).to be_a(Hash)
         expect(data[:attributes]).to have_key(:total_books_found)
+        expect(data[:attributes][:total_books_found]).to be_an(Integer)
         expect(data[:attributes]).to have_key(:books)
+        expect(data[:attributes][:books]).to be_an(Array)
 
         forecast = data[:attributes][:forecast]
         expect(forecast).to have_key(:summary)
@@ -30,7 +34,7 @@ RSpec.describe "Books API" do
         expect(forecast).to have_key(:temperature)
         expect(forecast[:temperature]).to be_an(String)
 
-        books = data[:attributes][:books]
+        books = data[:attributes][:books][0]
         expect(books).to have_key(:isbn)
         expect(books[:isbn]).to be_an(Array)
         expect(books).to have_key(:title)
