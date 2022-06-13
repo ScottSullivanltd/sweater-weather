@@ -10,7 +10,9 @@ RSpec.describe Book do
           "9780762507849",
           "0762507845"
         ],
-        publisher: "Universal Map Enterprises"
+        publisher: [
+          "Universal Map Enterprises"
+        ]
       ]
     }
     book = Book.new(attr)
@@ -19,6 +21,6 @@ RSpec.describe Book do
     expect(book.isbn[0]).to eq("9780762507849")
     expect(book.isbn[1]).to eq("0762507845")
     expect(book.title).to eq("Denver, Co.")
-    expect(book.publisher).to eq("Universal Map Enterprises")
+    expect(book.publisher[0]).to eq("Universal Map Enterprises")
   end
 end
