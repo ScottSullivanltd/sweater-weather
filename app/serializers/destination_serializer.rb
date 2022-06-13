@@ -11,10 +11,19 @@ class DestinationSerializer
             temperature: weather.current_weather.temperature
           }
         },
-        total_books_found: books[:numFound],
-        books: books.map do |book|
-                 Book.new(book)
-               end
+        total_books_found: books.count,
+        books: [
+          {
+            isbn: [
+              books.isbn[0],
+              books.isbn[1]
+            ],
+            title: books.title,
+            publisher: [
+              books.publisher
+            ]
+          }
+        ]
       }
     }
   end
