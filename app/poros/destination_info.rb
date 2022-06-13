@@ -2,6 +2,7 @@ class DestinationInfo
   attr_reader :id, :destination_info, :forecast_info, :total_books_found, :book_info
 
   def initialize(attr)
+    @id = nil
     @destination_info = create_destination(location)
     @forecast_info = create_forecast(attr[:forecast])
     @total_books_found = book.total_books_found
