@@ -4,6 +4,6 @@ class Api::V1::BreweriesController < ApplicationController
 
     weather = ForecastFacade.get_forecast(params[:location])
 
-    render json: LocationSerializer.destination_info(weather, params[:location], breweries)
+    render json: LocationSerializer.location_info(weather, params[:location], breweries)
   end
 end
