@@ -24,8 +24,7 @@ RSpec.describe "Backgrounds API" do
         expect(image[:description]).to be_a(String)
         expect(image).to have_key(:url)
         expect(image[:url]).to be_an(String)
-        # require "pry"
-        # binding.pry
+
         # expect(image).to have_key(:source)
         # expect(image[:source]).to be_a(String)
         expect(image).to have_key(:author)
