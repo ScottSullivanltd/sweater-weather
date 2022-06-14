@@ -12,7 +12,7 @@ class LocationSerializer
           },
           breweries: breweries.map do |brewery|
                        {
-                         brewery_id: brewery.id,
+                         id: brewery.brewery_id,
                          name: brewery.name,
                          brewery_type: brewery.brewery_type
                        }

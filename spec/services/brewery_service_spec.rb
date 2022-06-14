@@ -6,12 +6,14 @@ RSpec.describe BreweryService do
       location = "denver"
 
       response = BreweryService.get_breweries(location)
-      results = response[:docs][0]
+      result = response[0]
 
-      expect(results).to have_key(:name)
-      expect(results[:name]).to be_a(String)
-      expect(results).to have_key(:brewery_type)
-      expect(results[:brewery_type]).to be_a(String)
+      expect(result).to have_key(:id)
+      expect(result[:id]).to be_a(String)
+      expect(result).to have_key(:name)
+      expect(result[:name]).to be_a(String)
+      expect(result).to have_key(:brewery_type)
+      expect(result[:brewery_type]).to be_a(String)
     end
   end
 end

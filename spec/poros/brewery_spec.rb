@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Brewery do
   it "creates a poro for a brewery", :vcr do
     attr = {
-      brewery_id: "denver-beer-co-olde-town-arvada-denver",
+      id: "denver-beer-co-olde-town-arvada-denver",
       name: "Denver Beer Co Olde Town Arvada",
       brewery_type: "micro"
     }
