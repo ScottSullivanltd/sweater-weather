@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Users Registration" do
   it "successfully creates users", :vcr do
-    user = User.create!(email: "popp@catmail.com", password: "password", password_confirmation: "password", api_key: "jgn983hy48thw9begh98h4539h4")
+    user = create(:user)
 
     request = {
       email: user.email,
@@ -30,7 +30,7 @@ RSpec.describe "Users Registration" do
   end
 
   xit "does not create user if bad credentials", :vcr do
-    user = User.create!(email: "popp@catmail.com", password: "password", password_confirmation: "password12", api_key: "jgn983hy48thw9begh98h4539h4")
+    user = create(:user)
 
     request = {
       email: user.email,
