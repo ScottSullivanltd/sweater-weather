@@ -6,7 +6,7 @@ RSpec.describe BooksFacade do
       location = "denver,co"
       quantity = 5
       book = BooksFacade.get_location_books(location, quantity)
-      expect(book).to be_a(Book)
+      expect(book[0][0]).to be_a(Book)
     end
   end
 end
