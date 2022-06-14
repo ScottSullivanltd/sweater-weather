@@ -5,8 +5,8 @@ RSpec.describe BooksFacade do
     it ".get_location_books", :vcr do
       location = "denver,co"
       quantity = 5
-      response = BooksFacade.get_location_books(location, quantity)
-      expect(response).to be_a(Hash)
+      book = BooksFacade.get_location_books(location, quantity)
+      expect(book).to be_a(Book)
     end
   end
 end
