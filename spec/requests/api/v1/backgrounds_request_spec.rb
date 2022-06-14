@@ -18,21 +18,22 @@ RSpec.describe "Backgrounds API" do
         expect(data).to have_key(:type)
         expect(data[:type]).to eq("image")
         expect(data).to have_key(:attributes)
-        expect(data[:attributes]).to have_key(:image)
 
-        image = data[:attributes][:image]
+        image = data[:attributes]
         expect(image).to have_key(:description)
         expect(image[:description]).to be_a(String)
-        expect(image).to have_key(:image_url)
-        expect(image[:image_url]).to be_an(String)
-        expect(image).to have_key(:credit)
-        expect(image[:credit]).to be_a(Hash)
-
-        credit = image[:credit][:source]
-        expect(credit).to have_key(:source)
-        expect(credit[:source]).to be_a(String)
-        expect(credit).to have_key(:author)
-        expect(credit[:author]).to be_a(String)
+        expect(image).to have_key(:url)
+        expect(image[:url]).to be_an(String)
+        # require "pry"
+        # binding.pry
+        # expect(image).to have_key(:source)
+        # expect(image[:source]).to be_a(String)
+        expect(image).to have_key(:author)
+        expect(image[:author]).to be_a(String)
+        expect(image).to have_key(:alt_description)
+        expect(image[:alt_description]).to be_a(String)
+        expect(image).to have_key(:portfolio)
+        expect(image[:portfolio]).to be_a(String)
       end
     end
   end

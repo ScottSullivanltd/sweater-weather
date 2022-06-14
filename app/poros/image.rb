@@ -1,11 +1,12 @@
 class Image
-  attr_reader :description, :alt_description, :url, :author, :portfolio
+  attr_reader :id, :description, :alt_description, :url, :author, :portfolio, :source
 
   def initialize(attr)
-    @description = attr[:results][0][:description]
-    @alt_description = attr[:results][0][:alt_description]
-    @url = attr[:results][0][:urls][:regular]
-    @author = attr[:results][0][:user][:name]
-    @portfolio = attr[:results][0][:user][:portfolio_url]
+    @description = attr[:description]
+    @alt_description = attr[:alt_description]
+    @url = attr[:urls][:regular]
+    @author = attr[:user][:name]
+    @portfolio = attr[:user][:portfolio_url]
+    @source = "unsplash.com"
   end
 end
