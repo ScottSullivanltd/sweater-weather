@@ -10,12 +10,12 @@ class DestinationSerializer
             summary: weather.current_weather.conditions,
             temperature: weather.current_weather.temperature
           },
-          total_books_found: books[:numFound],
-          books: books[:docs].map do |book|
+          total_books_found: books[1],
+          books: books[0].map do |book|
                    {
-                     isbn: book[:isbn],
-                     title: book[:title],
-                     publisher: book[:publisher]
+                     isbn: book.isbn,
+                     title: book.title,
+                     publisher: book.publisher
                    }
                  end
         }
