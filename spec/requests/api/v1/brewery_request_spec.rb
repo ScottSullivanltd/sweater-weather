@@ -34,11 +34,11 @@ RSpec.describe "Breweries API" do
 
         breweries = data[:attributes][:breweries][0]
         expect(breweries).to have_key(:id)
-        expect(breweries[:id]).to be_an(Integer)
+        expect(breweries[:id]).to be_an(String)
         expect(breweries).to have_key(:name)
         expect(breweries[:name]).to be_an(String)
         expect(breweries).to have_key(:brewery_type)
-        expect(breweries[:brewery_type]).to be_an(Array)
+        expect(breweries[:brewery_type]).to be_an(String)
       end
     end
   end

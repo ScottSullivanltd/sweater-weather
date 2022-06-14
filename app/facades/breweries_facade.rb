@@ -1,6 +1,11 @@
 class BreweriesFacade
   def self.get_location_breweries(location, quantity)
     brewery_data = BreweryService.get_breweries(location)
-    Brewery.new(brewery_data[0])
+
+    breweries = []
+    brewery_data.first(quantity.to_i).map do |brewery|
+      breweries << Brewery.new(brewery)
+    end
+    breweries
   end
 end
