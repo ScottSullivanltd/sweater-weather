@@ -1,5 +1,5 @@
 class LocationSerializer
-  def self.location_info(weather, location, books)
+  def self.location_info(weather, location, breweries)
     {
       data: {
         id: nil,
