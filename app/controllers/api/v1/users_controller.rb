@@ -10,6 +10,16 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def login
+    user = User.find_by(email: params[:email])
+    if user.authenticate(params[:password])
+      session[:user_id] = user.id
+      render json: LoginSerializer.new(user), status: 200
+    else
+      render json: {error: "Credentials do not match"}, status: 400
+    end
+  end
+
   private
 
   def user_params
