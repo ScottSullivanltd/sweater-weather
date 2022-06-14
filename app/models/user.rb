@@ -1,11 +1,12 @@
 class User < ApplicationRecord
-  before_create do
-    self.api_key = SecureRandom.hex(13)
-  end
-
-  validates :email, uniqueness: true, presence: true
-  validates_presence_of :password
-  validates_presence_of :api_key
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates :password, confirmation: {case_sensitive: true}
+  validates :api_key, confirmation: {case_sensitive: true}, uniqueness: true
 
   has_secure_password
+
+  before_create do
+    self.api_key = SecureRandom.urlsafe_base64
+  end
 end
