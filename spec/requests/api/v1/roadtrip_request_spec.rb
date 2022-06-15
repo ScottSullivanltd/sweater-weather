@@ -94,24 +94,5 @@ RSpec.describe "Roadtrip" do
 
       expect(error).to have_key(:error)
     end
-
-    xit "does not send roadtrip info if a route does not exist", :vcr do
-      user = create(:user)
-
-      request = {
-        origin: "Denver, CO",
-        destination: "london",
-        api_key: user.api_key
-      }
-
-      post "/api/v1/road_trip", params: request, as: :json
-
-      expect(response).to_not be_successful
-      expect(response.status).to eq(400)
-
-      error = JSON.parse(response.body, symbolize_names: true)
-
-      expect(error).to have_key(:error)
-    end
   end
 end
