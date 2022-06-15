@@ -1,10 +1,12 @@
 class Api::V1::UsersController < ApplicationController
   def create
     @user = user_params
-    @user[:email] = @user[:email].downcase
+    if !params[:email].nil?
+      @user[:email] = @user[:email].downcase
+    end
     @new_user = User.new(@user)
 
-    if params[:password] == params[:password_confirmation]
+    if params[:password] == params[:password_confirmation] && !params[:email].nil?
       @new_user.save
       render json: UsersSerializer.new(@new_user), status: 201
     else
