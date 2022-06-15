@@ -41,6 +41,30 @@ RSpec.describe RoadtripsFacade do
       expect(weather).to eq("clear sky")
     end
 
+    xit ".daily_weather_temp", :vcr do
+      time = [1, 20, 15]
+      allow(RoadtripsFacade).to receive(:get_travel_time).and_return(time)
+
+      response = File.read("spec/fixtures/get_destination_weather_temp.yml")
+      data = JSON.parse(response, symbolize_names: true)
+
+      weather = RoadtripsFacade.daily_weather_temp(data, time)
+
+      expect(weather).to eq(85.0)
+    end
+
+    xit ".daily_weather_conditions", :vcr do
+      time = [51, 20, 15]
+      allow(RoadtripsFacade).to receive(:get_travel_time).and_return(time)
+
+      response = File.read("spec/fixtures/get_destination_weather_conditions.yml")
+      data = JSON.parse(response, symbolize_names: true)
+
+      weather = RoadtripsFacade.daily_weather_conditions(data, time)
+
+      expect(weather).to eq("clear sky")
+    end
+
     it ".create_destination_info", :vcr do
       expected = {
         start_city: "Denver, CO",
