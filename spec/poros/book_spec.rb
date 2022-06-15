@@ -13,6 +13,7 @@ RSpec.describe Book do
       ]
     }
     book = Book.new(attr)
+
     expect(book.isbn[0]).to eq("9780762507849")
     expect(book.isbn[1]).to eq("0762507845")
     expect(book.title).to eq("Denver, Co.")

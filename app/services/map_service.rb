@@ -6,4 +6,13 @@ class MapService < BaseService
     end
     get_json(response)[:results][0][:locations][0][:latLng]
   end
+
+  def self.get_directions_info(from, to)
+    response = conn("http://open.mapquestapi.com").get("/directions/v2/route") do |f|
+      f.params["key"] = ENV["maps_key"]
+      f.params["from"] = from
+      f.params["to"] = to
+    end
+    get_json(response)
+  end
 end

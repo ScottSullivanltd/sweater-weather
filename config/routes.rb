@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get "/breweries", to: "breweries#index"
       post "/users", to: "users#create"
       post "/sessions", to: "users#login"
+      post "/road_trip", to: "roadtrip#create"
     end
   end
 end
