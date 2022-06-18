@@ -32,20 +32,20 @@ RSpec.describe RoadtripsFacade do
 
     it ".get_destination_weather_temp", :vcr do
       weather = RoadtripsFacade.get_destination_weather_temp("denver, co", "estes park, co")
-      expect(weather).to eq(45.1)
+      expect(weather).to eq(63.5)
     end
 
     it ".get_destination_weather_conditions", :vcr do
       allow(RoadtripsFacade).to receive(:get_travel_time).and_return([1, 20, 15])
       weather = RoadtripsFacade.get_destination_weather_conditions("denver, co", "estes park, co")
-      expect(weather).to eq("clear sky")
+      expect(weather).to eq("broken clouds")
     end
 
     xit ".daily_weather_temp", :vcr do
       time = [1, 20, 15]
       allow(RoadtripsFacade).to receive(:get_travel_time).and_return(time)
 
-      response = File.read("spec/fixtures/get_destination_weather_temp.yml")
+      response = File.read("spec/fixtures/get_destination_weather_temp.json").to_json
       data = JSON.parse(response, symbolize_names: true)
 
       weather = RoadtripsFacade.daily_weather_temp(data, time)
@@ -57,7 +57,7 @@ RSpec.describe RoadtripsFacade do
       time = [51, 20, 15]
       allow(RoadtripsFacade).to receive(:get_travel_time).and_return(time)
 
-      response = File.read("spec/fixtures/get_destination_weather_conditions.yml")
+      response = File.read("spec/fixtures/get_destination_weather_conditions.json").to_json
       data = JSON.parse(response, symbolize_names: true)
 
       weather = RoadtripsFacade.daily_weather_conditions(data, time)
@@ -71,8 +71,8 @@ RSpec.describe RoadtripsFacade do
         end_city: "Estes Park, CO",
         travel_time: "1 Hours, 19 Minutes",
         weather_at_eta: {
-          temperature: 45.1,
-          condition: "clear sky"
+          temperature: 63.5,
+          condition: "broken clouds"
         }
       }
 
